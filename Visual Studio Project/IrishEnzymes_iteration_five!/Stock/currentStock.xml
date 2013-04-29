@@ -1,0 +1,142 @@
+<?xml version="1.0" standalone="yes"?>
+<NewDataSet>
+  <Stock>
+    <StockID>1</StockID>
+    <Price>150</Price>
+    <Stock_level>20</Stock_level>
+    <SupplierID>1</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>4</StockID>
+    <Description>Aldehyde dehydrogenase</Description>
+    <Price>123</Price>
+    <Stock_level>43</Stock_level>
+    <SupplierID>8</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>9</StockID>
+    <Description>Aspartate aminotransferase</Description>
+    <Price>45</Price>
+    <Stock_level>201</Stock_level>
+    <SupplierID>9</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>13</StockID>
+    <Description>ATP synthase</Description>
+    <Price>4000</Price>
+    <Stock_level>20</Stock_level>
+    <SupplierID>5</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>8</StockID>
+    <Description>Catalase</Description>
+    <Price>33</Price>
+    <Stock_level>5000</Stock_level>
+    <SupplierID>6</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>20</StockID>
+    <Description>Chymotrypsin</Description>
+    <Price>788</Price>
+    <Stock_level>22</Stock_level>
+    <SupplierID>1</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>14</StockID>
+    <Description>Citrate synthase</Description>
+    <Price>33</Price>
+    <Stock_level>89</Stock_level>
+    <SupplierID>13</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>16</StockID>
+    <Description>Citrulline Synthase</Description>
+    <Price>789</Price>
+    <Stock_level>8933</Stock_level>
+    <SupplierID>4</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>19</StockID>
+    <Description>Cytochrome oxidase</Description>
+    <Price>33</Price>
+    <Stock_level>332</Stock_level>
+    <SupplierID>4</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>7</StockID>
+    <Description>Glutathione_S_transferase</Description>
+    <Price>89</Price>
+    <Stock_level>345</Stock_level>
+    <SupplierID>1</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>18</StockID>
+    <Description>Haemoglobin</Description>
+    <Price>34</Price>
+    <Stock_level>444</Stock_level>
+    <SupplierID>11</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>12</StockID>
+    <Description>Hexokinase</Description>
+    <Price>39</Price>
+    <Stock_level>87</Stock_level>
+    <SupplierID>3</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>15</StockID>
+    <Description>Isocitrate dehydrogenase</Description>
+    <Price>21</Price>
+    <Stock_level>76</Stock_level>
+    <SupplierID>12</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>2</StockID>
+    <Description>Monoamine oxidase</Description>
+    <Price>100</Price>
+    <Stock_level>45</Stock_level>
+    <SupplierID>2</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>5</StockID>
+    <Description>Pepsin</Description>
+    <Price>21</Price>
+    <Stock_level>4</Stock_level>
+    <SupplierID>11</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>11</StockID>
+    <Description>Phosphofructokinase</Description>
+    <Price>99</Price>
+    <Stock_level>33</Stock_level>
+    <SupplierID>14</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>3</StockID>
+    <Description>Sepiapterin Reductase</Description>
+    <Price>45</Price>
+    <Stock_level>33</Stock_level>
+    <SupplierID>7</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>6</StockID>
+    <Description>Trypsin</Description>
+    <Price>33</Price>
+    <Stock_level>400</Stock_level>
+    <SupplierID>10</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>10</StockID>
+    <Description>Tyrosine hydroxylase</Description>
+    <Price>300</Price>
+    <Stock_level>2</Stock_level>
+    <SupplierID>3</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>17</StockID>
+    <Description>Urease</Description>
+    <Price>88</Price>
+    <Stock_level>88</Stock_level>
+    <SupplierID>4</SupplierID>
+  </Stock>
+</NewDataSet>

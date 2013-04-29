@@ -1,0 +1,19 @@
+<NewDataSet>
+  <Stock>
+    <StockID>10</StockID>
+    <Description>yaoreriueydroxylase</Description>
+    <SupplierID>3</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>11</StockID>
+    <Description>Phosphofructokinase</Description>
+    <SupplierID>14</SupplierID>
+  </Stock>
+  <Stock>
+    <StockID>
+    </StockID>
+    <Description>uuuuuuuuuuu</Description>
+    <Stock_level>87</Stock_level>
+    <SupplierID>3</SupplierID>
+  </Stock>
+</NewDataSet>

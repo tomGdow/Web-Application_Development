@@ -1,0 +1,26 @@
+<bookstore>
+  <book genre="Comedy">
+    <title>When will I be famous</title>
+    <price>$12.99</price>
+    <author>
+      <first-name>asdf</first-name>
+      <last-name>asdf</last-name>
+    </author>
+  </book>
+  <book genre="www">
+    <title>Ghost Busters</title>
+    <price>$5.751</price>
+    <author>
+      <first-name>asdf</first-name>
+      <last-name>asdf</last-name>
+    </author>
+  </book>
+  <book genre="Drama">
+    <title>Our Land</title>
+    <price>$15.99</price>
+    <author>
+      <first-name>asdf</first-name>
+      <last-name>asdf</last-name>
+    </author>
+  </book>
+</bookstore>

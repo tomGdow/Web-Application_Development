@@ -1,0 +1,95 @@
+﻿<%@ Master Language="VB" AutoEventWireup="false" CodeFile="Site.Master.vb" Inherits="Site" %>
+
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="asp" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <div id="siteLogo">
+                    <p id="bannerHeading">
+                        Irish Enzymes
+                    </p>
+                    <p id="bannerSubHeading">
+                        Stock and Customer Management System</p>
+                </div>
+                <asp:ScriptManager ID="ScriptManager1" runat="server">
+                </asp:ScriptManager>
+            </div>
+            <div class="loginDisplay">
+                <asp:LoginView ID="HeadLoginView" runat="server" EnableViewState="false">
+                    <AnonymousTemplate>
+                        [ <a href="~/Account/Login.aspx" id="HeadLoginStatus" runat="server">Log In</a>
+                        ]
+                    </AnonymousTemplate>
+                    <LoggedInTemplate>
+                        Welcome <span class="bold">
+                            <asp:LoginName ID="HeadLoginName" runat="server" />
+                        </span>! [
+                        <asp:LoginStatus ID="HeadLoginStatus" runat="server" LogoutAction="Redirect" LogoutText="Log Out"
+                            LogoutPageUrl="~/" />
+                        ]
+                    </LoggedInTemplate>
+                </asp:LoginView>
+            </div>
+            <div class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false"
+                    IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home" />
+                        <asp:MenuItem NavigateUrl="~/Customers/customers.aspx" Text="Customers">
+                            <asp:MenuItem NavigateUrl="~/Customers/customers.aspx" Text="Add New" Value="Add New">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Customers/customersDetailed.aspx" Text="Details" Value="New Item">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Customers/masterDetails.aspx" Text="Orders (Master-Detail)"
+                                Value="Orders (Master-Detail)"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Stock/stockEntryMaster.aspx" Text="Stock" Value="Stock">
+                            <asp:MenuItem Text="Admin (DAL)" Value="Admin (DAL)" NavigateUrl="~/Stock/stockEntryMaster.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Stock/generateXMLm.aspx" Text="Generate XML" Value="Generate XML">
+                            </asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Stock/formattedXML.aspx" Text="Formatted XML" Value="Formatted XML">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem Text="Suppliers" Value="Suppliers" 
+                            NavigateUrl="~/Suppliers/adoSuppliers.aspx">
+                            <asp:MenuItem NavigateUrl="~/Suppliers/adoSuppliers.aspx" Text="Details (ADO.net)"
+                                Value="Details (ADO.net)"></asp:MenuItem>
+                            <asp:MenuItem NavigateUrl="~/Suppliers/suppliersEntryMaster.aspx" Text="Admin (DAL)"
+                                Value="Admin (DAL)"></asp:MenuItem>
+                        </asp:MenuItem>
+                        <asp:MenuItem NavigateUrl="~/Searches/searchCustomers2.aspx" Text="Search">
+                            <asp:MenuItem Text="Customers" Value="Customers" NavigateUrl="~/Searches/searchCustomers2.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Stock" Value="Stock" NavigateUrl="~/Searches/searchStock.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Orders" Value="Orders" NavigateUrl="~/Searches/searchOrders.aspx">
+                            </asp:MenuItem>
+                            <asp:MenuItem Text="Suppliers" Value="Suppliers" NavigateUrl="~/Searches/searchSuppliers.aspx">
+                            </asp:MenuItem>
+                        </asp:MenuItem>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server" />
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+    </div>
+    </form>
+</body>
+</html>
