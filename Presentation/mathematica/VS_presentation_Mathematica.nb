@@ -1,0 +1,2676 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     99365,       2667]
+NotebookOptionsPosition[     93881,       2475]
+NotebookOutlinePosition[     94403,       2497]
+CellTagsIndexPosition[     94317,       2492]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"erf", " ", "=", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"LightGray", ",", 
+       RowBox[{"Arrowheads", "[", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", ".015"}], "}"}], "]"}], ",", 
+       RowBox[{"Arrow", "[", 
+        RowBox[{"#1", ",", ".35"}], "]"}]}], "}"}], "&"}], ")"}]}], 
+  ";"}]], "Input",
+ CellChangeTimes->{{3.5607687930893207`*^9, 3.5607688376283207`*^9}, {
+   3.560768890256321*^9, 3.5607688970713205`*^9}, 3.5607689433783207`*^9, {
+   3.5607690562433205`*^9, 3.5607690716843204`*^9}, 3.5607709766237116`*^9, {
+   3.561375971675078*^9, 3.5613759833350782`*^9}}],
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{"vcr1", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], 
+      RowBox[{"(*", "Search", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", "2"}], " ", 
+      RowBox[{"(*", "Customers", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", ".8"}], " ", 
+      RowBox[{"(*", "suppliers", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", 
+       RowBox[{"-", "0.8"}]}], 
+      RowBox[{"(*", "Orders", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"2", ",", 
+       RowBox[{"-", "2"}]}], " ", 
+      RowBox[{"(*", "stock", "*)"}], "}"}], ",", " ", 
+     RowBox[{"{", 
+      RowBox[{"5", ",", "2"}], " ", 
+      RowBox[{"(*", "MasterDetail", "*)"}], "}"}]}], "}"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"vrf", " ", "=", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"White", ",", " ", 
+       RowBox[{"EdgeForm", "[", "Blue", "]"}], ",", "Black", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Inset", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"#2", ",", " ", 
+           RowBox[{"FontSize", " ", "->", " ", "14"}], ",", " ", 
+           RowBox[{"FontFamily", " ", "->", " ", "\"\<Cambria\>\""}]}], " ", 
+          "]"}], ",", " ", "#1"}], "]"}]}], "}"}], "&"}], ")"}]}], 
+  ";"}]}], "Input",
+ CellChangeTimes->{{3.5607714831967115`*^9, 3.5607714837197113`*^9}, 
+   3.5607715512527113`*^9, {3.5607717603897114`*^9, 3.5607717607747116`*^9}, {
+   3.560943456737974*^9, 3.56094346645553*^9}, {3.560943502158572*^9, 
+   3.560943514100255*^9}, {3.561372160146512*^9, 3.561372175099502*^9}, {
+   3.561372211102701*^9, 3.561372213837248*^9}, {3.561372393925675*^9, 
+   3.561372400938376*^9}, {3.5613724828825693`*^9, 3.5613725070459857`*^9}, {
+   3.561372562502531*^9, 3.5613725678180623`*^9}, {3.561372638744154*^9, 
+   3.5613726504573255`*^9}, {3.56137283251853*^9, 3.5613728468399615`*^9}, 
+   3.5613729023675137`*^9, {3.561373029898266*^9, 3.5613730505133266`*^9}, {
+   3.561374926507908*^9, 3.561374946875944*^9}, {3.5762314250122476`*^9, 
+   3.576231459969248*^9}, {3.5762316361162477`*^9, 3.5762316876302476`*^9}, {
+   3.5762317868422475`*^9, 3.5762317873422475`*^9}, {3.5762318361032476`*^9, 
+   3.576231846292248*^9}, {3.5762320597932477`*^9, 3.5762320633992476`*^9}, {
+   3.5762322996562476`*^9, 3.5762323354262476`*^9}, {3.5762323978292475`*^9, 
+   3.5762324105012474`*^9}, 3.576232469750248*^9, {3.5762325232472477`*^9, 
+   3.5762325331332474`*^9}, {3.5762666849271326`*^9, 3.576266708354472*^9}, {
+   3.576266979034954*^9, 3.576267001893262*^9}, {3.5762671382580614`*^9, 
+   3.576267243355073*^9}}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"gpSeach", "=", 
+  RowBox[{"GraphPlot", "[", 
+   RowBox[{
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"search", " ", "\[Rule]", " ", "customers"}], ",", 
+      RowBox[{"search", " ", "\[Rule]", "  ", "suppliers"}], ",", " ", 
+      RowBox[{"search", " ", "\[Rule]", " ", "orders"}], ",", " ", 
+      RowBox[{"search", " ", "\[Rule]", " ", "stock"}], ",", " ", 
+      RowBox[{"customers", "\[Rule]", "masterDetail"}]}], " ", "}"}], ",", 
+    " ", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    RowBox[{"EdgeRenderingFunction", "\[Rule]", "erf"}], ",", 
+    RowBox[{"VertexCoordinateRules", "\[Rule]", "vcr1"}], ",", 
+    RowBox[{"MultiedgeStyle", "\[Rule]", "1"}], ",", 
+    RowBox[{"VertexRenderingFunction", "->", " ", "vrf"}], ",", " ", 
+    RowBox[{"ImageSize", " ", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"600", ",", " ", "400"}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.560761642650086*^9, 3.560761659473048*^9}, {
+   3.5607616917708955`*^9, 3.560761692345928*^9}, {3.560761761272871*^9, 
+   3.5607617634369946`*^9}, {3.560761875371397*^9, 3.560761876969488*^9}, {
+   3.5607630605819316`*^9, 3.5607630676469316`*^9}, {3.5607631878609314`*^9, 
+   3.5607631925669317`*^9}, {3.5607632785359316`*^9, 
+   3.5607632837779317`*^9}, {3.560763377109932*^9, 3.5607633809689317`*^9}, {
+   3.5607643811529317`*^9, 3.5607643820739317`*^9}, {3.5607644247979317`*^9, 
+   3.5607644342049313`*^9}, {3.5607645744129314`*^9, 
+   3.5607645788729315`*^9}, {3.5607656077119317`*^9, 
+   3.5607656180259314`*^9}, {3.5607656943919315`*^9, 
+   3.5607657008089314`*^9}, {3.560765750690295*^9, 3.560765751184394*^9}, {
+   3.560765803254806*^9, 3.5607658050321617`*^9}, {3.5607658706692867`*^9, 
+   3.5607658786068735`*^9}, {3.5607659980677605`*^9, 
+   3.5607660062303934`*^9}, {3.5607661539274282`*^9, 3.560766194158451*^9}, {
+   3.560766313316366*^9, 3.5607663187239065`*^9}, {3.5607663520492387`*^9, 
+   3.5607663799910326`*^9}, {3.560766553060338*^9, 3.560766572013233*^9}, {
+   3.5607667737884083`*^9, 3.5607667832673564`*^9}, {3.56076681600863*^9, 
+   3.560766823279357*^9}, {3.5607668612751565`*^9, 3.5607668932263513`*^9}, {
+   3.5607670489309196`*^9, 3.5607670532283497`*^9}, {3.5607670857906055`*^9, 
+   3.560767104243451*^9}, {3.56076717214124*^9, 3.560767196908716*^9}, {
+   3.5607683649733205`*^9, 3.5607683701113205`*^9}, {3.5607685385103207`*^9, 
+   3.5607685720143204`*^9}, {3.5607686188053207`*^9, 
+   3.5607686293083205`*^9}, {3.560768814612321*^9, 3.5607688150843205`*^9}, {
+   3.560768865494321*^9, 3.5607688791813207`*^9}, {3.560770994832711*^9, 
+   3.5607710534347115`*^9}, {3.5607710972377114`*^9, 
+   3.5607711124967117`*^9}, {3.560771165556711*^9, 3.5607712133287115`*^9}, {
+   3.5607713359637117`*^9, 3.5607713753297114`*^9}, {3.5607714455317116`*^9, 
+   3.5607714560177116`*^9}, {3.5607716496967115`*^9, 
+   3.5607717116287117`*^9}, {3.560771778353711*^9, 3.560771783025711*^9}, {
+   3.560772184846711*^9, 3.5607721865557117`*^9}, {3.5607728707637115`*^9, 
+   3.560772895188711*^9}, {3.560772937469432*^9, 3.560772954774892*^9}, {
+   3.5607729896848726`*^9, 3.5607730048469048`*^9}, {3.5613721338982635`*^9, 
+   3.561372150964676*^9}, {3.5613723805113335`*^9, 3.561372386626945*^9}, {
+   3.5613724707693586`*^9, 3.561372474869768*^9}, {3.5613725479370747`*^9, 
+   3.5613725524755282`*^9}, {3.5613726694732265`*^9, 
+   3.5613726740516844`*^9}, {3.5613728567359514`*^9, 
+   3.5613728616004376`*^9}, {3.561374400097272*^9, 3.5613744045707192`*^9}, {
+   3.561374966813938*^9, 3.5613749728175383`*^9}, {3.561375004496706*^9, 
+   3.561375005747831*^9}, 3.561377634890078*^9, {3.5762314680482473`*^9, 
+   3.5762315341852474`*^9}, {3.5762315758902473`*^9, 
+   3.5762316034472475`*^9}, {3.5762317752932477`*^9, 3.576231775792248*^9}, {
+   3.576231894396248*^9, 3.5762320036542473`*^9}, {3.5762320773222475`*^9, 
+   3.5762320834822474`*^9}, {3.576232418962248*^9, 3.5762324461172476`*^9}, {
+   3.576232487613248*^9, 3.5762325102352476`*^9}, 3.5762325873202477`*^9}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[{{
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {2., 2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., 0.8}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., -0.8}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {2., -2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{2., 2.}, {5., 2.}}, 0.35]}}, {
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Search\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {0., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Customers\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {2., 2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Suppliers\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., 0.8}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Orders\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., -0.8}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Stock\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {2., -2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Master-Detail\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {5., 2.}]}}},
+   Annotation[#, 
+    VertexCoordinateRules -> {{0., 0.}, {2., 2.}, {3., 0.8}, {3., -0.8}, {
+     2., -2.}, {5., 2.}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{600, 400},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{
+  3.5762316050042477`*^9, 3.5762316938032475`*^9, 3.5762318164232473`*^9, 
+   3.5762318534442472`*^9, {3.5762318948462477`*^9, 3.5762320046682477`*^9}, {
+   3.5762320660712476`*^9, 3.5762320840162477`*^9}, {3.5762324475582476`*^9, 
+   3.5762325358272476`*^9}, 3.5762325877802477`*^9, 3.57623349523143*^9, {
+   3.5762635486737704`*^9, 3.5762635775254207`*^9}, 3.576263696940251*^9, 
+   3.576263831339938*^9, 3.5762666908154693`*^9, 3.576266722205265*^9, {
+   3.576266985855345*^9, 3.576267006378518*^9}, {3.5762671172778616`*^9, 
+   3.5762671423082933`*^9}, 3.5762671774333024`*^9, {3.5762672197807245`*^9, 
+   3.576267247189292*^9}, 3.5762680922246256`*^9, 3.5762983703264337`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"search", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Search\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762309396372476`*^9, 3.5762309743552475`*^9}, {
+   3.5762310151382475`*^9, 3.5762310888412476`*^9}, {3.5762311575552473`*^9, 
+   3.576231182922248*^9}, 3.5762312936662474`*^9, {3.5762634857401705`*^9, 
+   3.5762635003850083`*^9}, {3.5762635357090287`*^9, 3.576263542772433*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Search\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5762311994162474`*^9, 3.5762312951642475`*^9, 3.576231816443248*^9, 
+   3.576233495249434*^9, {3.576263544069507*^9, 3.5762635486967716`*^9}, 
+   3.5762636969572515`*^9, 3.576263831357939*^9, 3.5762666908334703`*^9, 
+   3.576298370365436*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"?", "Framed"}]], "Input",
+ CellChangeTimes->{{3.5762635119566703`*^9, 3.5762635161509104`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  StyleBox["\<\"\!\(\*RowBox[{\\\"Framed\\\", \\\"[\\\", \
+StyleBox[\\\"expr\\\", \\\"TI\\\"], \\\"]\\\"}]\) displays a framed version \
+of \!\(\*StyleBox[\\\"expr\\\", \\\"TI\\\"]\). \"\>", "MSG"], 
+  "\[NonBreakingSpace]", 
+  ButtonBox[
+   StyleBox["\[RightSkeleton]", "SR"],
+   Active->True,
+   BaseStyle->"Link",
+   ButtonData->"paclet:ref/Framed"]}]], "Print", "PrintUsage",
+ CellChangeTimes->{3.5762983707664585`*^9},
+ CellTags->"Info3576301970-9824039"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"customers", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Customers\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762312139112473`*^9, 3.5762312225782475`*^9}, {
+   3.576231259054248*^9, 3.5762312828872476`*^9}, 3.576231482007248*^9, 
+   3.5762636475954285`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Customers\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.576231223528248*^9, {3.5762312679492474`*^9, 3.576231283547248*^9}, 
+   3.5762314823782473`*^9, 3.5762318164582477`*^9, 3.5762334952664375`*^9, 
+   3.5762635488247795`*^9, 3.5762636491125154`*^9, 3.57626369710026*^9, 
+   3.5762638314999475`*^9, 3.5762666909974794`*^9, 3.576298370827462*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"suppliers", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Suppliers\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762312309532475`*^9, 3.576231232363248*^9}, {
+   3.576231302073248*^9, 3.5762313183692474`*^9}, 3.5762314996442475`*^9, 
+   3.5762636537567806`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Suppliers\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.576231311974248*^9, 3.5762313192562475`*^9}, 
+   3.5762315001592474`*^9, 3.5762318164782476`*^9, 3.576233495282441*^9, 
+   3.57626354884378*^9, 3.5762636552618666`*^9, 3.5762636971182613`*^9, 
+   3.576263831517948*^9, 3.5762666910164804`*^9, 3.5762983708454638`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"orders", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Orders\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576231338568248*^9, 3.5762313445042477`*^9}, 
+   3.5762315141422477`*^9, 3.5762636633203278`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Orders\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762313453102474`*^9, 3.5762315148102474`*^9, 
+  3.5762318164942474`*^9, 3.576233495299444*^9, 3.576263548860781*^9, 
+  3.5762636648864174`*^9, 3.576263697136262*^9, 3.576263831536949*^9, 
+  3.5762666910454826`*^9, 3.5762983708644643`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"stock", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Stock\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762313759342475`*^9, 3.5762313987772474`*^9}, {
+   3.576231518139248*^9, 3.5762315194442472`*^9}, 3.576263667760582*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Stock\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5762313995512476`*^9, 3.5762315206702476`*^9, 3.5762318165122476`*^9, 
+   3.576233495315447*^9, 3.576263548877782*^9, {3.576263669139661*^9, 
+   3.576263697154263*^9}, 3.5762638315549507`*^9, 3.5762666910634837`*^9, 
+   3.576298370883466*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"masterDetail", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Master-Detail\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762322695042477`*^9, 3.5762322826762476`*^9}, 
+   3.576232433691248*^9, 3.576263672570857*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Master-Detail\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5762316050042477`*^9, 3.5762316938032475`*^9, 3.5762318164232473`*^9, 
+   3.5762318534442472`*^9, {3.5762318948462477`*^9, 3.5762320046682477`*^9}, {
+   3.5762320660712476`*^9, 3.5762320840162477`*^9}, {3.5762324475582476`*^9, 
+   3.5762325358272476`*^9}, 3.5762325877802477`*^9, 3.5762329611072474`*^9, 
+   3.5762334953314505`*^9, 3.576263548896783*^9, {3.5762636736739197`*^9, 
+   3.576263697173264*^9}, 3.5762638315729513`*^9, 3.5762666910834846`*^9, 
+   3.576298370902467*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"addNew", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Add New\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762329719662476`*^9, 3.5762329982842474`*^9}, 
+   3.57626367664609*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Add New\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5762329996102476`*^9, 3.5762334953474536`*^9, 3.5762635489247847`*^9, {
+   3.57626367787016*^9, 3.576263697191265*^9}, 3.5762638315909524`*^9, 
+   3.5762666911024857`*^9, 3.5762983709424686`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"details", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Details\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762330094872475`*^9, 3.5762330170132475`*^9}, 
+   3.5762636817273808`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Details\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5762330177942476`*^9, 3.576233495364457*^9, 3.5762635489547863`*^9, {
+   3.5762636830374556`*^9, 3.576263697209266*^9}, 3.576263831607953*^9, 
+   3.5762666911204867`*^9, 3.5762983709614697`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"ordersMasterDetail", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Orders (Master-Detail)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762330262482476`*^9, 3.5762330544782476`*^9}, {
+   3.576233492189822*^9, 3.5762334934360714`*^9}, 3.5762636869636803`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Orders (Master-Detail)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.5762330473542476`*^9, 3.5762330555482473`*^9}, 
+   3.57623349538146*^9, 3.576263548983788*^9, {3.576263688460766*^9, 
+   3.5762636972272673`*^9}, 3.5762638316259546`*^9, 3.576266691138488*^9, 
+   3.576298370979471*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vrf", " ", "=", " ", 
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"White", ",", " ", 
+       RowBox[{"EdgeForm", "[", "Blue", "]"}], ",", "Black", ",", 
+       "\[IndentingNewLine]", 
+       RowBox[{"Inset", "[", 
+        RowBox[{
+         RowBox[{"Style", "[", 
+          RowBox[{"#2", ",", " ", 
+           RowBox[{"FontSize", " ", "->", " ", "14"}], ",", " ", 
+           RowBox[{"FontFamily", " ", "->", " ", "\"\<Cambria\>\""}]}], " ", 
+          "]"}], ",", " ", "#1"}], "]"}]}], "}"}], "&"}], ")"}]}], 
+  ";"}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"vcr2", "=", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"0", ",", "0"}], 
+      RowBox[{"(*", "Customers", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "2"}], " ", 
+      RowBox[{"(*", 
+       RowBox[{"Add", " ", "New"}], "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", "0"}], " ", 
+      RowBox[{"(*", "Details", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"3", ",", 
+       RowBox[{"-", "2"}]}], "  ", 
+      RowBox[{"(*", "Master", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"7", ",", 
+       RowBox[{"-", "2"}]}], "  ", 
+      RowBox[{"(*", "det_ord", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5.5", ",", "3.5"}], " ", 
+      RowBox[{"(*", "new", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5.5", ",", "2"}], 
+      RowBox[{"(*", "edit", "*)"}], "}"}], ",", 
+     RowBox[{"{", 
+      RowBox[{"5.5", ",", "0.5"}], 
+      RowBox[{"(*", "delete", "*)"}], "}"}]}], "}"}]}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.5607714831967115`*^9, 3.5607714837197113`*^9}, 
+   3.5607715512527113`*^9, {3.5607717603897114`*^9, 3.5607717607747116`*^9}, {
+   3.560943456737974*^9, 3.56094346645553*^9}, {3.560943502158572*^9, 
+   3.560943514100255*^9}, {3.561372160146512*^9, 3.561372175099502*^9}, {
+   3.561372211102701*^9, 3.561372213837248*^9}, {3.561372393925675*^9, 
+   3.561372400938376*^9}, {3.5613724828825693`*^9, 3.5613725070459857`*^9}, {
+   3.561372562502531*^9, 3.5613725678180623`*^9}, {3.561372638744154*^9, 
+   3.5613726504573255`*^9}, {3.56137283251853*^9, 3.5613728468399615`*^9}, 
+   3.5613729023675137`*^9, {3.561373029898266*^9, 3.5613730505133266`*^9}, {
+   3.561374926507908*^9, 3.561374946875944*^9}, {3.5762314250122476`*^9, 
+   3.576231459969248*^9}, {3.5762316361162477`*^9, 3.5762316876302476`*^9}, {
+   3.5762317868422475`*^9, 3.5762317873422475`*^9}, {3.5762318361032476`*^9, 
+   3.576231846292248*^9}, {3.5762320597932477`*^9, 3.5762320633992476`*^9}, {
+   3.5762322996562476`*^9, 3.5762323354262476`*^9}, {3.5762323978292475`*^9, 
+   3.5762324105012474`*^9}, 3.576232469750248*^9, {3.5762325232472477`*^9, 
+   3.5762325331332474`*^9}, 3.576233074575248*^9, {3.5762331132652473`*^9, 
+   3.5762332846234083`*^9}, {3.576233393999141*^9, 3.576233398225831*^9}, {
+   3.576233428336871*^9, 3.576233478254036*^9}, {3.576267833441824*^9, 
+   3.576267834704896*^9}, {3.576267950591524*^9, 3.576267972352769*^9}, {
+   3.576268049764197*^9, 3.5762680766807365`*^9}, {3.576268304256753*^9, 
+   3.576268318664577*^9}, {3.576268358478854*^9, 3.576268365643264*^9}, {
+   3.5762684361642976`*^9, 3.5762684891883307`*^9}, {3.576268555985151*^9, 
+   3.5762685620484977`*^9}, 3.5762685947353673`*^9, {3.5762687085678782`*^9, 
+   3.576268733483303*^9}}],
+
+Cell[BoxData[
+ RowBox[{"{", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"0", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "0"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", 
+     RowBox[{"-", "2"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"7", ",", 
+     RowBox[{"-", "2"}]}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5.5`", ",", "3.5`"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5.5`", ",", "2"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{"5.5`", ",", "0.5`"}], "}"}]}], "}"}]], "Output",
+ CellChangeTimes->{{3.5762332753827133`*^9, 3.5762332856918354`*^9}, 
+   3.5762333990571637`*^9, 3.5762334451916103`*^9, {3.5762334793272505`*^9, 
+   3.576233495404465*^9}, 3.5762635490267906`*^9, 3.576263697252269*^9, 
+   3.5762638316519556`*^9, 3.5762666911634893`*^9, 3.5762678360789747`*^9, {
+   3.5762679583749695`*^9, 3.576267974157872*^9}, {3.5762680583396873`*^9, 
+   3.5762681088405757`*^9}, 3.576268369291473*^9, {3.576268446838908*^9, 
+   3.5762684906224127`*^9}, 3.5762685968874903`*^9, 3.576268734932386*^9, 
+   3.5762983710064726`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Master", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Master\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762677936105456`*^9, 3.576267803741125*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Master\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762678046771784`*^9, 3.576268108881578*^9, 
+  3.576298371028474*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"DetailOrders", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Detail (Orders)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762679098601947`*^9, 3.576267926996175*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Detail (Orders)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.576267927772219*^9, 3.5762681089025793`*^9, 
+  3.5762983710484753`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"newcust", " ", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<New\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762682347207756`*^9, 3.576268257628086*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"New\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.5762682483405547`*^9, 3.576268258341127*^9}, 
+   3.576298371068476*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"editcust", " ", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Edit\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762685255314093`*^9, 3.576268535672989*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Edit\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.57626853673305*^9, 3.576298371118479*^9, 
+  3.576301276947683*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"delcust", " ", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Delete\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762686709817286`*^9, 3.576268680658282*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Delete\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762686854665565`*^9, 3.576298371148481*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"gpCustomers", "=", 
+  RowBox[{"GraphPlot", "[", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+      RowBox[{"customers", " ", "\[Rule]", " ", "addNew"}], ",", " ", 
+      RowBox[{"customers", " ", "\[Rule]", " ", "details"}], ",", " ", 
+      RowBox[{"customers", " ", "\[Rule]", " ", "Master"}], ",", 
+      RowBox[{"Master", " ", "\[Rule]", " ", "DetailOrders"}], ",", " ", 
+      RowBox[{"addNew", " ", "\[Rule]", " ", "newcust"}], ",", 
+      RowBox[{"addNew", " ", "\[Rule]", " ", "editcust"}], ",", 
+      RowBox[{"addNew", " ", "\[Rule]", " ", "delcust"}]}], "}"}], ",", " ", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    RowBox[{"EdgeRenderingFunction", "\[Rule]", "erf"}], ",", 
+    RowBox[{"VertexCoordinateRules", "\[Rule]", "vcr2"}], ",", 
+    RowBox[{"MultiedgeStyle", "\[Rule]", "1"}], ",", 
+    RowBox[{"VertexRenderingFunction", "->", " ", "vrf"}], ",", " ", 
+    RowBox[{"ImageSize", " ", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"600", ",", " ", "400"}], "}"}]}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.560761642650086*^9, 3.560761659473048*^9}, {
+   3.5607616917708955`*^9, 3.560761692345928*^9}, {3.560761761272871*^9, 
+   3.5607617634369946`*^9}, {3.560761875371397*^9, 3.560761876969488*^9}, {
+   3.5607630605819316`*^9, 3.5607630676469316`*^9}, {3.5607631878609314`*^9, 
+   3.5607631925669317`*^9}, {3.5607632785359316`*^9, 
+   3.5607632837779317`*^9}, {3.560763377109932*^9, 3.5607633809689317`*^9}, {
+   3.5607643811529317`*^9, 3.5607643820739317`*^9}, {3.5607644247979317`*^9, 
+   3.5607644342049313`*^9}, {3.5607645744129314`*^9, 
+   3.5607645788729315`*^9}, {3.5607656077119317`*^9, 
+   3.5607656180259314`*^9}, {3.5607656943919315`*^9, 
+   3.5607657008089314`*^9}, {3.560765750690295*^9, 3.560765751184394*^9}, {
+   3.560765803254806*^9, 3.5607658050321617`*^9}, {3.5607658706692867`*^9, 
+   3.5607658786068735`*^9}, {3.5607659980677605`*^9, 
+   3.5607660062303934`*^9}, {3.5607661539274282`*^9, 3.560766194158451*^9}, {
+   3.560766313316366*^9, 3.5607663187239065`*^9}, {3.5607663520492387`*^9, 
+   3.5607663799910326`*^9}, {3.560766553060338*^9, 3.560766572013233*^9}, {
+   3.5607667737884083`*^9, 3.5607667832673564`*^9}, {3.56076681600863*^9, 
+   3.560766823279357*^9}, {3.5607668612751565`*^9, 3.5607668932263513`*^9}, {
+   3.5607670489309196`*^9, 3.5607670532283497`*^9}, {3.5607670857906055`*^9, 
+   3.560767104243451*^9}, {3.56076717214124*^9, 3.560767196908716*^9}, {
+   3.5607683649733205`*^9, 3.5607683701113205`*^9}, {3.5607685385103207`*^9, 
+   3.5607685720143204`*^9}, {3.5607686188053207`*^9, 
+   3.5607686293083205`*^9}, {3.560768814612321*^9, 3.5607688150843205`*^9}, {
+   3.560768865494321*^9, 3.5607688791813207`*^9}, {3.560770994832711*^9, 
+   3.5607710534347115`*^9}, {3.5607710972377114`*^9, 
+   3.5607711124967117`*^9}, {3.560771165556711*^9, 3.5607712133287115`*^9}, {
+   3.5607713359637117`*^9, 3.5607713753297114`*^9}, {3.5607714455317116`*^9, 
+   3.5607714560177116`*^9}, {3.5607716496967115`*^9, 
+   3.5607717116287117`*^9}, {3.560771778353711*^9, 3.560771783025711*^9}, {
+   3.560772184846711*^9, 3.5607721865557117`*^9}, {3.5607728707637115`*^9, 
+   3.560772895188711*^9}, {3.560772937469432*^9, 3.560772954774892*^9}, {
+   3.5607729896848726`*^9, 3.5607730048469048`*^9}, {3.5613721338982635`*^9, 
+   3.561372150964676*^9}, {3.5613723805113335`*^9, 3.561372386626945*^9}, {
+   3.5613724707693586`*^9, 3.561372474869768*^9}, {3.5613725479370747`*^9, 
+   3.5613725524755282`*^9}, {3.5613726694732265`*^9, 
+   3.5613726740516844`*^9}, {3.5613728567359514`*^9, 
+   3.5613728616004376`*^9}, {3.561374400097272*^9, 3.5613744045707192`*^9}, {
+   3.561374966813938*^9, 3.5613749728175383`*^9}, {3.561375004496706*^9, 
+   3.561375005747831*^9}, 3.561377634890078*^9, {3.5762314680482473`*^9, 
+   3.5762315341852474`*^9}, {3.5762315758902473`*^9, 
+   3.5762316034472475`*^9}, {3.5762317752932477`*^9, 3.576231775792248*^9}, {
+   3.576231894396248*^9, 3.5762320036542473`*^9}, {3.5762320773222475`*^9, 
+   3.5762320834822474`*^9}, {3.576232418962248*^9, 3.5762324461172476`*^9}, {
+   3.576232487613248*^9, 3.5762325102352476`*^9}, 3.5762325873202477`*^9, {
+   3.5762330826842475`*^9, 3.576233098955248*^9}, {3.576233296284071*^9, 
+   3.576233378599984*^9}, {3.5762678519138803`*^9, 3.576267852988942*^9}, {
+   3.576267989291738*^9, 3.5762680018254547`*^9}, {3.5762683926488085`*^9, 
+   3.5762684011412945`*^9}, {3.5762686166646214`*^9, 3.576268629983383*^9}, {
+   3.57626875039227*^9, 3.576268763230005*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[{{
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., 2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., 0.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., -2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., 2.}, {5.5, 3.5}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., 2.}, {5.5, 2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., 2.}, {5.5, 0.5}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., -2.}, {7., -2.}}, 0.35]}}, {
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Customers\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {0., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Add New\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., 2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Details\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Master\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., -2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Detail (Orders)\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {7., -2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"New\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {5.5, 3.5}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Edit\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {5.5, 2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Delete\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {5.5, 0.5}]}}},
+   Annotation[#, 
+    VertexCoordinateRules -> {{0., 0.}, {3., 2.}, {3., 0.}, {3., -2.}, {
+     7., -2.}, {5.5, 3.5}, {5.5, 2.}, {5.5, 0.5}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{600, 400},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{{3.5762333791091876`*^9, 3.5762334013280716`*^9}, 
+   3.57623344784267*^9, {3.5762334820147877`*^9, 3.5762334954404726`*^9}, 
+   3.576263549084794*^9, 3.576263697293271*^9, 3.576263831691958*^9, 
+   3.5762666912034917`*^9, 3.5762678542290125`*^9, 3.576268003276538*^9, 
+   3.5762681089435816`*^9, 3.576268403061404*^9, {3.5762684505681214`*^9, 
+   3.5762684939316015`*^9}, 3.5762686321115055`*^9, 3.5762687646280847`*^9, 
+   3.576298371205484*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["suppliers"], "Input",
+ CellChangeTimes->{{3.5762337582562327`*^9, 3.576233759901397*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Suppliers\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762337605844655`*^9, 3.5762635491117954`*^9, 
+  3.576263697309272*^9, 3.576263831708959*^9, 3.5762666912204924`*^9, 
+  3.5762983712354856`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["stock"], "Input",
+ CellChangeTimes->{{3.5762337651169186`*^9, 3.576233766017009*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Stock\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762337667320805`*^9, 3.5762635491297965`*^9, 
+  3.5762636973232727`*^9, 3.57626383172296*^9, 3.5762666912344933`*^9, 
+  3.576298371251487*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"adminDAL", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Admin (DAL)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576233782612668*^9, 3.5762338096123676`*^9}, 
+   3.5762637663742223`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Admin (DAL)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762338114875555`*^9, 3.576263549155798*^9, 
+  3.5762636973382735`*^9, 3.5762637684773426`*^9, 3.576263831737961*^9, 
+  3.576266691250494*^9, 3.576298371268488*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"xmlStock", " ", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<XML\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576233828964303*^9, 3.5762338484812546`*^9}, {
+  3.576263773211613*^9, 3.5762637774488554`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"XML\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.576233850107417*^9, 3.5762635491847997`*^9, 
+  3.5762636973542747`*^9, 3.57626377804889*^9, 3.5762638317549615`*^9, 
+  3.576266691266495*^9, 3.5762983713034897`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"generate", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Generate\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762338589082966`*^9, 3.5762338716325693`*^9}, {
+  3.5762637831461816`*^9, 3.5762637926037226`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Generate\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.576233872599666*^9, 3.576263549212801*^9, 
+  3.5762636973732758`*^9, 3.576263793843793*^9, 3.576263831773963*^9, 
+  3.5762666912844963`*^9, 3.5762983713224907`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"viewFormatted", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<View Formatted\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762338838377895`*^9, 3.5762338979251986`*^9}, {
+  3.576263800660183*^9, 3.576263802840308*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"View Formatted\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5762338993803434`*^9, 3.576263549240803*^9, 3.5762636973902764`*^9, {
+   3.576263804364395*^9, 3.576263831791964*^9}, 3.576266691302497*^9, 
+   3.5762983713414917`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"edit", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Edit\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762339088752933`*^9, 3.5762339176911745`*^9}, 
+   3.5762638094756875`*^9}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Edit\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.576233918475253*^9, 3.5762635492698045`*^9, 3.5762636974082775`*^9, {
+   3.576263810935771*^9, 3.576263831809965*^9}, 3.5762666913204985`*^9, 
+   3.5762983713604927`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"editcust", ",", 
+  RowBox[{"addNew", " ", "\[Rule]", " ", "delcust"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"currentStockXML", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<CurrentStock.xml\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576233928357241*^9, 3.576233943005706*^9}, {
+  3.5762638156190386`*^9, 3.576263827387712*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"CurrentStock.xml\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.576233944065812*^9, 3.576263549299806*^9, 3.5762636974262786`*^9, {
+   3.576263818283191*^9, 3.576263831829966*^9}, 3.576266691338499*^9, 
+   3.5762983713794937`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"edit2", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\< Edit \>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{
+  3.5763016122088585`*^9, {3.5763016839039593`*^9, 3.5763016890282526`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\" Edit \"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.576301616740118*^9, {3.5763016852600374`*^9, 3.576301690292325*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"validate", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Validate?\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.57630316284155*^9, 3.5763031870669355`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Validate?\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5763031828536944`*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"2", ",", 
+     RowBox[{"-", "2"}]}], 
+    RowBox[{"(*", "XML", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", "0"}], "  ", 
+    RowBox[{"(*", 
+     RowBox[{"(", "generate"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"6", ",", 
+     RowBox[{"-", "2"}]}], "  ", 
+    RowBox[{"(*", 
+     RowBox[{"(", "viewFormatted"}], "*)"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"5", ",", 
+     RowBox[{"-", "4"}]}], " ", 
+    RowBox[{"(*", 
+     RowBox[{"(", "edit"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"9", ",", 
+     RowBox[{"-", "4"}]}], "  ", 
+    RowBox[{"(*", 
+     RowBox[{"(", "currenStockXML"}], "*)"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "3.5"}], " ", 
+    RowBox[{"(*", "new", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "2"}], 
+    RowBox[{"(*", "edit", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{"3", ",", "0.5"}], 
+    RowBox[{"(*", "delete", "*)"}], "}"}]}]}]], "Input",
+ CellChangeTimes->{3.576298590239012*^9}],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"vcr3", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], 
+       RowBox[{"(*", "stock", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"3.4", ",", "3"}], " ", 
+       RowBox[{"(*", "adminDAl", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"2", ",", 
+        RowBox[{"-", "2"}]}], 
+       RowBox[{"(*", "XML", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"5", ",", "0"}], "  ", 
+       RowBox[{"(*", 
+        RowBox[{"(", "generate"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"6", ",", 
+        RowBox[{"-", "2"}]}], "  ", 
+       RowBox[{"(*", 
+        RowBox[{"(", "viewFormatted"}], "*)"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"5", ",", 
+        RowBox[{"-", "4"}]}], " ", 
+       RowBox[{"(*", 
+        RowBox[{"(", "edit"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"9", ",", 
+        RowBox[{"-", "4"}]}], "  ", 
+       RowBox[{"(*", 
+        RowBox[{"(", "currenStockXML"}], "*)"}], "}"}], ",", 
+      "\[IndentingNewLine]", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", "4.5"}], 
+       RowBox[{"(*", "new", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", "3"}], 
+       RowBox[{"(*", "validate", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", "1.5"}], 
+       RowBox[{"(*", "delete", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"10", ",", "4.5"}], 
+       RowBox[{"(*", "new", "*)"}], "}"}]}], "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "\[IndentingNewLine]", "\[IndentingNewLine]", 
+     "\[IndentingNewLine]", "}"}]}], ";"}], 
+  "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"gpStock", "=", 
+  RowBox[{"GraphPlot", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+      RowBox[{"stock", " ", "\[Rule]", " ", "adminDAL"}], ",", " ", 
+      RowBox[{"stock", " ", "\[Rule]", " ", "xmlStock"}], ",", " ", 
+      RowBox[{"xmlStock", " ", "\[Rule]", " ", "generate"}], ",", 
+      RowBox[{"xmlStock", "\[Rule]", " ", "viewFormatted"}], ",", " ", 
+      RowBox[{"xmlStock", " ", "\[Rule]", " ", "edit"}], ",", 
+      RowBox[{"edit", " ", "\[Rule]", " ", "currentStockXML"}], ",", " ", 
+      RowBox[{"adminDAL", " ", "\[Rule]", " ", "validate"}], ",", 
+      RowBox[{"adminDAL", " ", "\[Rule]", " ", "edit2"}], ",", " ", 
+      RowBox[{"adminDAL", " ", "\[Rule]", " ", "delcust"}], ",", 
+      RowBox[{"validate", "\[Rule]", " ", "newcust"}], ","}], 
+     "\[IndentingNewLine]", " ", "\[IndentingNewLine]", "}"}], ",", " ", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    RowBox[{"EdgeRenderingFunction", "\[Rule]", "erf"}], ",", 
+    RowBox[{"VertexCoordinateRules", "\[Rule]", "vcr3"}], ",", 
+    RowBox[{"MultiedgeStyle", "\[Rule]", "1"}], ",", 
+    RowBox[{"VertexRenderingFunction", "->", " ", "vrf"}], ",", " ", 
+    RowBox[{"ImageSize", " ", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"700", ",", " ", "600"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5607714831967115`*^9, 3.5607714837197113`*^9}, 
+   3.5607715512527113`*^9, {3.5607717603897114`*^9, 3.5607717607747116`*^9}, {
+   3.560943456737974*^9, 3.56094346645553*^9}, {3.560943502158572*^9, 
+   3.560943514100255*^9}, {3.561372160146512*^9, 3.561372175099502*^9}, {
+   3.561372211102701*^9, 3.561372213837248*^9}, {3.561372393925675*^9, 
+   3.561372400938376*^9}, {3.5613724828825693`*^9, 3.5613725070459857`*^9}, {
+   3.561372562502531*^9, 3.5613725678180623`*^9}, {3.561372638744154*^9, 
+   3.5613726504573255`*^9}, {3.56137283251853*^9, 3.5613728468399615`*^9}, 
+   3.5613729023675137`*^9, {3.561373029898266*^9, 3.5613730505133266`*^9}, {
+   3.561374926507908*^9, 3.561374946875944*^9}, {3.5762314250122476`*^9, 
+   3.576231459969248*^9}, {3.5762316361162477`*^9, 3.5762316876302476`*^9}, {
+   3.5762317868422475`*^9, 3.5762317873422475`*^9}, {3.5762318361032476`*^9, 
+   3.576231846292248*^9}, {3.5762320597932477`*^9, 3.5762320633992476`*^9}, {
+   3.5762322996562476`*^9, 3.5762323354262476`*^9}, {3.5762323978292475`*^9, 
+   3.5762324105012474`*^9}, 3.576232469750248*^9, {3.5762325232472477`*^9, 
+   3.5762325331332474`*^9}, 3.576233074575248*^9, {3.5762331132652473`*^9, 
+   3.5762332846234083`*^9}, {3.576233393999141*^9, 3.576233398225831*^9}, {
+   3.576233428336871*^9, 3.576233478254036*^9}, {3.576233964782883*^9, 
+   3.576234102656669*^9}, {3.5762341532617292`*^9, 3.576234176320035*^9}, {
+   3.576234368208222*^9, 3.5762345454089403`*^9}, 3.576234576052004*^9, {
+   3.5762980934966*^9, 3.576298094158638*^9}, {3.576298128968629*^9, 
+   3.576298165821737*^9}, {3.576298212098384*^9, 3.57629823073345*^9}, {
+   3.5762983359154654`*^9, 3.57629833668351*^9}, {3.5762984000001307`*^9, 
+   3.57629846676995*^9}, {3.5762985701408625`*^9, 3.5762986418649645`*^9}, {
+   3.57629867202569*^9, 3.576298689231674*^9}, {3.5762987832150497`*^9, 
+   3.576298783675076*^9}, {3.5762988485127845`*^9, 3.576298871972126*^9}, {
+   3.5762989049460125`*^9, 3.576299006880842*^9}, {3.576299051458392*^9, 
+   3.57629910177927*^9}, {3.5762992141056952`*^9, 3.576299289176989*^9}, {
+   3.5763005500851088`*^9, 3.5763005599566736`*^9}, {3.5763005933095813`*^9, 
+   3.5763006694749374`*^9}, {3.5763007840934935`*^9, 
+   3.5763007939600573`*^9}, {3.576300846402057*^9, 3.5763009068965173`*^9}, {
+   3.5763009510480423`*^9, 3.576301102492705*^9}, 3.57630116412423*^9, {
+   3.5763012074207063`*^9, 3.576301240859619*^9}, {3.5763012858491917`*^9, 
+   3.576301322816306*^9}, {3.576301356729246*^9, 3.5763013843048234`*^9}, {
+   3.576301634693145*^9, 3.5763016553513265`*^9}, {3.5763017005399113`*^9, 
+   3.576301747621604*^9}, {3.576301781071517*^9, 3.576301935078326*^9}, {
+   3.576302172467904*^9, 3.5763022218327274`*^9}, {3.5763032012107444`*^9, 
+   3.5763032804532766`*^9}, {3.5763051406976767`*^9, 3.576305145436948*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[{{
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3.4, 3.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {2., -2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3.4, 3.}, {7., 4.5}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3.4, 3.}, {7., 3.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3.4, 3.}, {7., 1.5}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{2., -2.}, {5., 0.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{2., -2.}, {6., -2.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{2., -2.}, {5., -4.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{5., -4.}, {9., -4.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{7., 4.5}, {10., 4.5}}, 0.35]}}, {
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Stock\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {0., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Admin (DAL)\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3.4, 3.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"XML\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {2., -2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Generate\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {5., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"View Formatted\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {6., -2.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Edit\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {5., -4.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"CurrentStock.xml\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {9., -4.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Validate?\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {7., 4.5}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\" Edit \"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {7., 3.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Delete\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {7., 1.5}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"New\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {10., 4.5}]}}},
+   Annotation[#, 
+    VertexCoordinateRules -> {{0., 0.}, {3.4, 3.}, {2., -2.}, {5., 0.}, {
+     6., -2.}, {5., -4.}, {9., -4.}, {7., 4.5}, {7., 3.}, {7., 1.5}, {10., 
+     4.5}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{700, 600},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{{3.5763010255153017`*^9, 3.576301063001446*^9}, 
+   3.576301103790779*^9, 3.5763011681414595`*^9, 3.5763012147901278`*^9, {
+   3.5763012869912577`*^9, 3.5763013234873447`*^9}, 3.576301365050722*^9, 
+   3.5763014430861855`*^9, {3.576301647145857*^9, 3.5763016560033636`*^9}, {
+   3.5763016952826104`*^9, 3.57630174806763*^9}, {3.5763018098371625`*^9, 
+   3.5763019362243915`*^9}, {3.5763021825074778`*^9, 3.5763022223777585`*^9}, 
+   3.5763032025358205`*^9, {3.576303253024708*^9, 3.5763032808903017`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"editcust", "\[Equal]", "edit"}]], "Input",
+ CellChangeTimes->{{3.576301559704856*^9, 3.576301577750888*^9}}],
+
+Cell[BoxData["True"], "Output",
+ CellChangeTimes->{{3.5763015609429264`*^9, 3.576301578610937*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"supplerdetails", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Details (ADO.net)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576233928357241*^9, 3.576233943005706*^9}, {
+  3.576234726346032*^9, 3.5762347457719746`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Details (ADO.net)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.576234747966194*^9, 3.576263549392812*^9, 
+  3.5762636974972825`*^9, 3.5762638319029703`*^9, 3.5762666914105034`*^9, 
+  3.5762983714644985`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["newcust"], "Input"],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"New\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5763009194202337`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"suppleradmin", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Admin (DAL)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762347608784847`*^9, 3.576234801873584*^9}, {
+  3.576304489072406*^9, 3.5763044968208494`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Admin (DAL)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5762348052439213`*^9, 3.5762635494188128`*^9, 
+  3.5762636975132837`*^9, 3.576263831918971*^9, 3.576266691426504*^9, 
+  3.5762983714855003`*^9, 3.5763044975438905`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"newSupplierXML", " ", "=", "  ", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<New Supplier (XML)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576234824128809*^9, 3.5762348592643223`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"New Supplier (XML)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.5762348419055867`*^9, 3.5762348619555917`*^9}, 
+   3.5762635494458146`*^9, 3.5762636975312843`*^9, 3.576263831937972*^9, 
+   3.576266691444505*^9, 3.576298371507501*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData["edit"], "Input",
+ CellChangeTimes->{{3.576234866429039*^9, 3.5762348675471506`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Edit\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.576234868292225*^9, 3.5762635494968176`*^9, 
+  3.5762636975482855`*^9, 3.5762638319539733`*^9, 3.5762666914625063`*^9, 
+  3.576298371525502*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"create", " ", "=", "  ", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Create\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5762348782892246`*^9, 3.5762348858669825`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Create\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.576234886675063*^9, 3.5762635495258193`*^9, 
+  3.5762636975672865`*^9, 3.5762638319729743`*^9, 3.5762666914805074`*^9, 
+  3.5762983715435033`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"adoDetails", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Details (ADO.net)\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.576303822300269*^9, 3.576303839352244*^9}, {
+  3.576303870155006*^9, 3.57630393176353*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"Details (ADO.net)\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{
+  3.5763038399502783`*^9, {3.5763038811546354`*^9, 3.5763038891650934`*^9}, 
+   3.576303933146609*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"newSupplierXML", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<New Supplier XML\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5763039991803856`*^9, 3.5763040112170744`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"New Supplier XML\"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.5763040028625965`*^9, 3.576304012175129*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"editxml2", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<  Edit XML \>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5763054565967455`*^9, 3.5763054929818263`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"  Edit XML \"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{{3.5763054690304565`*^9, 3.576305493863877*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"createXML", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<  Create XML \>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.5763056512618794`*^9, 3.5763056606084137`*^9}}],
+
+Cell[BoxData[
+ FrameBox[
+  StyleBox["\<\"  Create XML \"\>",
+   StripOnInput->False,
+   FontFamily->"Verdana",
+   FontSize->25],
+  Background->GrayLevel[1],
+  FrameMargins->10,
+  FrameStyle->RGBColor[1, 0.5, 0],
+  RoundingRadius->5,
+  StripOnInput->False]], "Output",
+ CellChangeTimes->{3.5763056621115*^9}]
+}, Open  ]],
+
+Cell[BoxData[
+ RowBox[{"supplier", "=", 
+  RowBox[{"Framed", "[", " ", 
+   RowBox[{
+    RowBox[{"Style", "[", 
+     RowBox[{"\"\<Supplier\>\"", ",", " ", 
+      RowBox[{"FontFamily", " ", "\[Rule]", "  ", "\"\<Verdana\>\""}], ",", 
+      " ", 
+      RowBox[{"FontSize", " ", "\[Rule]", " ", "25"}]}], "]"}], ",", 
+    RowBox[{"FrameStyle", "\[Rule]", " ", "Orange"}], ",", " ", 
+    RowBox[{"RoundingRadius", "\[Rule]", "5"}], ",", 
+    RowBox[{"FrameMargins", "\[Rule]", " ", "10"}], ",", " ", 
+    RowBox[{"Background", " ", "\[Rule]", " ", "White"}]}], "]"}]}]], "Input"],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "generate"}], ",", " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "viewFormatted"}], ",", " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "edit"}], ",", " ", 
+  "\[IndentingNewLine]", 
+  RowBox[{"edit", " ", "\[Rule]", " ", "currentStockXML"}], ",", 
+  "\[IndentingNewLine]", 
+  RowBox[{"addNew", " ", "\[Rule]", " ", "newcust"}], ",", 
+  "\[IndentingNewLine]", 
+  RowBox[{"addNew", " ", "\[Rule]", " ", "editcust"}], ",", 
+  RowBox[{"addNew", " ", "\[Rule]", " ", "delcust"}], ",", 
+  "\[IndentingNewLine]", 
+  RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "editxml2"}], ",", 
+  "\[IndentingNewLine]", 
+  RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "createXML"}]}]], "Input",
+ CellChangeTimes->{{3.576305154376459*^9, 3.576305162414919*^9}, {
+  3.576305508903737*^9, 3.5763055168501916`*^9}, {3.576305673687162*^9, 
+  3.5763056852868257`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"{", 
+   RowBox[{"2", ",", 
+    RowBox[{"-", "2"}]}], 
+   RowBox[{"(*", "newSupplierXML", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+  RowBox[{"{", 
+   RowBox[{"5", ",", "0"}], "  ", 
+   RowBox[{"(*", 
+    RowBox[{"(", "generate"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+  RowBox[{"{", 
+   RowBox[{"6", ",", 
+    RowBox[{"-", "2"}]}], "  ", 
+   RowBox[{"(*", 
+    RowBox[{"(", "viewFormatted"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+  RowBox[{"{", 
+   RowBox[{"5", ",", 
+    RowBox[{"-", "4"}]}], " ", 
+   RowBox[{"(*", 
+    RowBox[{"(", "edit"}], "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{"{", 
+    RowBox[{"9", ",", 
+     RowBox[{"-", "4"}]}], "  ", 
+    RowBox[{"(*", 
+     RowBox[{"(", "currenStockXML"}], "*)"}], "}"}], ";"}]}]], "Input"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[{
+ RowBox[{
+  RowBox[{
+   RowBox[{"vcr4", "=", 
+    RowBox[{"{", "\[IndentingNewLine]", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"0", ",", "0"}], 
+       RowBox[{"(*", "supplier", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "3"}], " ", 
+       RowBox[{"(*", "adoNet", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", 
+        RowBox[{"-", "4"}]}], 
+       RowBox[{"(*", "newSupplierXML", "*)"}], "}"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"3", ",", "0"}], 
+       RowBox[{"(*", "adminDal", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"6", ",", "0"}], " ", 
+       RowBox[{"(*", "new", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"6", ",", "1.5"}], " ", 
+       RowBox[{"(*", "edit", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"6", ",", 
+        RowBox[{"-", "1.5"}]}], 
+       RowBox[{"(*", "delete", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", 
+        RowBox[{"-", "3"}]}], 
+       RowBox[{"(*", "editXML", "*)"}], "}"}], ",", "\[IndentingNewLine]", 
+      RowBox[{"{", 
+       RowBox[{"7", ",", 
+        RowBox[{"-", "5"}]}], 
+       RowBox[{"(*", "create", "*)"}], "}"}]}], "\[IndentingNewLine]", 
+     "}"}]}], ";"}], "\[IndentingNewLine]"}], "\[IndentingNewLine]", 
+ RowBox[{"gpSupp", "=", 
+  RowBox[{"GraphPlot", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{"{", " ", 
+     RowBox[{
+      RowBox[{"supplier", " ", "\[Rule]", " ", "adoDetails"}], ",", " ", 
+      "\[IndentingNewLine]", 
+      RowBox[{"supplier", " ", "\[Rule]", " ", "newSupplierXML"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"supplier", " ", "\[Rule]", " ", "suppleradmin"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"suppleradmin", " ", "\[Rule]", " ", "newcust"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"suppleradmin", " ", "\[Rule]", " ", "editcust"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"suppleradmin", " ", "\[Rule]", " ", "delcust"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "editxml2"}], ",", 
+      "\[IndentingNewLine]", 
+      RowBox[{"newSupplierXML", " ", "\[Rule]", " ", "createXML"}]}], 
+     "\[IndentingNewLine]", "}"}], ",", " ", "\[IndentingNewLine]", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"VertexLabeling", " ", "\[Rule]", " ", "True"}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"DirectedEdges", "\[Rule]", " ", "True"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"EdgeRenderingFunction", "\[Rule]", "erf"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"VertexCoordinateRules", "\[Rule]", "vcr4"}], ",", 
+    "\[IndentingNewLine]", 
+    RowBox[{"MultiedgeStyle", "\[Rule]", "1"}], ",", "\[IndentingNewLine]", 
+    RowBox[{"VertexRenderingFunction", "->", " ", "vrf"}], ",", " ", 
+    "\[IndentingNewLine]", 
+    RowBox[{"ImageSize", " ", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"700", ",", " ", "600"}], "}"}]}]}], 
+   "]"}]}], "\[IndentingNewLine]"}], "Input",
+ CellChangeTimes->{{3.5607714831967115`*^9, 3.5607714837197113`*^9}, 
+   3.5607715512527113`*^9, {3.5607717603897114`*^9, 3.5607717607747116`*^9}, {
+   3.560943456737974*^9, 3.56094346645553*^9}, {3.560943502158572*^9, 
+   3.560943514100255*^9}, {3.561372160146512*^9, 3.561372175099502*^9}, {
+   3.561372211102701*^9, 3.561372213837248*^9}, {3.561372393925675*^9, 
+   3.561372400938376*^9}, {3.5613724828825693`*^9, 3.5613725070459857`*^9}, {
+   3.561372562502531*^9, 3.5613725678180623`*^9}, {3.561372638744154*^9, 
+   3.5613726504573255`*^9}, {3.56137283251853*^9, 3.5613728468399615`*^9}, 
+   3.5613729023675137`*^9, {3.561373029898266*^9, 3.5613730505133266`*^9}, {
+   3.561374926507908*^9, 3.561374946875944*^9}, {3.5762314250122476`*^9, 
+   3.576231459969248*^9}, {3.5762316361162477`*^9, 3.5762316876302476`*^9}, {
+   3.5762317868422475`*^9, 3.5762317873422475`*^9}, {3.5762318361032476`*^9, 
+   3.576231846292248*^9}, {3.5762320597932477`*^9, 3.5762320633992476`*^9}, {
+   3.5762322996562476`*^9, 3.5762323354262476`*^9}, {3.5762323978292475`*^9, 
+   3.5762324105012474`*^9}, 3.576232469750248*^9, {3.5762325232472477`*^9, 
+   3.5762325331332474`*^9}, 3.576233074575248*^9, {3.5762331132652473`*^9, 
+   3.5762332846234083`*^9}, {3.576233393999141*^9, 3.576233398225831*^9}, {
+   3.576233428336871*^9, 3.576233478254036*^9}, {3.576233964782883*^9, 
+   3.576234102656669*^9}, {3.5762341532617292`*^9, 3.576234176320035*^9}, {
+   3.576234368208222*^9, 3.5762345454089403`*^9}, 3.576234576052004*^9, {
+   3.5762349241248083`*^9, 3.5762350638747816`*^9}, {3.576235105491943*^9, 
+   3.5762351250919027`*^9}, {3.5763038534530506`*^9, 3.57630386008243*^9}, {
+   3.576303910880335*^9, 3.57630391341648*^9}, {3.5763039576850123`*^9, 
+   3.576303963131324*^9}, {3.5763040219726896`*^9, 3.5763040480771823`*^9}, {
+   3.576304102979323*^9, 3.5763041760205*^9}, {3.576304208914382*^9, 
+   3.5763042461145096`*^9}, {3.576304278084338*^9, 3.5763043434910793`*^9}, {
+   3.5763043820632854`*^9, 3.5763044256867805`*^9}, {3.576304456413538*^9, 
+   3.5763044775777483`*^9}, {3.5763051907095375`*^9, 
+   3.5763053177168016`*^9}, {3.576305370471819*^9, 3.5763054206246877`*^9}, {
+   3.576305529225899*^9, 3.5763056300666676`*^9}, {3.5763057276162467`*^9, 
+   3.5763057630922756`*^9}, {3.576305795486129*^9, 3.57630584132275*^9}, {
+   3.5763058765947676`*^9, 3.5763059483278704`*^9}}],
+
+Cell[BoxData[
+ GraphicsBox[
+  TagBox[{{
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., 3.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., -4.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{0., 0.}, {3., 0.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., -4.}, {7., -3.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., -4.}, {7., -5.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., 0.}, {6., 0.}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., 0.}, {6., 1.5}}, 0.35]}, 
+     {GrayLevel[0.85], Arrowheads[{0, 0.015}], 
+      ArrowBox[{{3., 0.}, {6., -1.5}}, 0.35]}}, {
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Supplier\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {0., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Details (ADO.net)\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., 3.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"New Supplier XML\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., -4.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Admin (DAL)\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {3., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"New\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {6., 0.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Edit\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {6., 1.5}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"Delete\"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {6., -1.5}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"  Edit XML \"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {7., -3.}]}, 
+     {GrayLevel[0], EdgeForm[RGBColor[0, 0, 1]], InsetBox[
+       StyleBox[
+        FrameBox[
+         StyleBox["\<\"  Create XML \"\>",
+          StripOnInput->False,
+          FontFamily->"Verdana",
+          FontSize->25],
+         Background->GrayLevel[1],
+         FrameMargins->10,
+         FrameStyle->RGBColor[1, 0.5, 0],
+         RoundingRadius->5,
+         StripOnInput->False],
+        StripOnInput->False,
+        FontFamily->"Cambria",
+        FontSize->14], {7., -5.}]}}},
+   Annotation[#, 
+    VertexCoordinateRules -> {{0., 0.}, {3., 3.}, {3., -4.}, {3., 0.}, {6., 
+     0.}, {6., 1.5}, {6., -1.5}, {7., -3.}, {7., -5.}}]& ],
+  AspectRatio->Automatic,
+  FrameTicks->None,
+  ImageSize->{700, 600},
+  PlotRange->All,
+  PlotRangePadding->Scaled[0.1]]], "Output",
+ CellChangeTimes->{
+  3.576304344340128*^9, {3.576304415378191*^9, 3.576304426318817*^9}, {
+   3.5763044618798504`*^9, 3.576304501924141*^9}, {3.5763052333509765`*^9, 
+   3.576305318663856*^9}, {3.5763053746380577`*^9, 3.5763054211027155`*^9}, {
+   3.5763055371353517`*^9, 3.576305630449689*^9}, {3.576305742428094*^9, 
+   3.576305764250342*^9}, {3.5763058029315543`*^9, 3.5763058418387794`*^9}, {
+   3.5763058770807953`*^9, 3.576305948739894*^9}}]
+}, Open  ]]
+},
+WindowSize->{967, 589},
+WindowMargins->{{134, Automatic}, {Automatic, 12}},
+ShowSelection->True,
+FrontEndVersion->"7.0 for Microsoft Windows (64-bit) (February 18, 2009)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "Info3576301970-9824039"->{
+  Cell[14095, 336, 484, 12, 42, "Print",
+   CellTags->"Info3576301970-9824039"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"Info3576301970-9824039", 94212, 2486}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[545, 20, 641, 16, 31, "Input"],
+Cell[1189, 38, 2696, 59, 92, "Input"],
+Cell[CellGroupData[{
+Cell[3910, 101, 4225, 66, 92, "Input"],
+Cell[8138, 169, 4359, 120, 415, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[12534, 294, 872, 16, 52, "Input"],
+Cell[13409, 312, 527, 15, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[13973, 332, 119, 2, 31, "Input"],
+Cell[14095, 336, 484, 12, 42, "Print",
+ CellTags->"Info3576301970-9824039"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14616, 353, 748, 15, 52, "Input"],
+Cell[15367, 370, 579, 15, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15983, 390, 748, 15, 52, "Input"],
+Cell[16734, 407, 552, 14, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[17323, 426, 690, 14, 52, "Input"],
+Cell[18016, 442, 521, 14, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[18574, 461, 712, 14, 52, "Input"],
+Cell[19289, 477, 526, 15, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[19852, 497, 701, 14, 52, "Input"],
+Cell[20556, 513, 772, 18, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21365, 536, 666, 14, 52, "Input"],
+Cell[22034, 552, 481, 14, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[22552, 571, 670, 14, 52, "Input"],
+Cell[23225, 587, 480, 14, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[23742, 606, 744, 14, 52, "Input"],
+Cell[24489, 622, 517, 14, 70, "Output"]
+}, Open  ]],
+Cell[25021, 639, 582, 16, 52, "Input"],
+Cell[CellGroupData[{
+Cell[25628, 659, 2806, 56, 72, "Input"],
+Cell[28437, 717, 1132, 28, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[29606, 750, 638, 13, 52, "Input"],
+Cell[30247, 765, 351, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[30635, 782, 653, 13, 52, "Input"],
+Cell[31291, 797, 362, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[31690, 814, 641, 13, 52, "Input"],
+Cell[32334, 829, 351, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[32722, 846, 643, 13, 52, "Input"],
+Cell[33368, 861, 346, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[33751, 878, 644, 13, 52, "Input"],
+Cell[34398, 893, 326, 11, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[34761, 909, 4718, 72, 112, "Input"],
+Cell[39482, 983, 5295, 151, 415, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[44814, 1139, 103, 1, 31, "Input"],
+Cell[44920, 1142, 429, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45386, 1160, 99, 1, 31, "Input"],
+Cell[45488, 1163, 424, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[45949, 1181, 673, 14, 52, "Input"],
+Cell[46625, 1197, 451, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[47113, 1215, 693, 14, 52, "Input"],
+Cell[47809, 1231, 444, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48290, 1249, 697, 14, 52, "Input"],
+Cell[48990, 1265, 448, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49475, 1283, 704, 14, 52, "Input"],
+Cell[50182, 1299, 461, 14, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[50680, 1318, 664, 14, 52, "Input"],
+Cell[51347, 1334, 453, 14, 70, "Output"]
+}, Open  ]],
+Cell[51815, 1351, 106, 2, 31, "Input"],
+Cell[CellGroupData[{
+Cell[51946, 1357, 775, 15, 52, "Input"],
+Cell[52724, 1374, 461, 14, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[53222, 1393, 666, 14, 52, "Input"],
+Cell[53891, 1409, 353, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54281, 1426, 642, 13, 52, "Input"],
+Cell[54926, 1441, 307, 11, 70, "Output"]
+}, Open  ]],
+Cell[55248, 1455, 1251, 37, 192, "Input"],
+Cell[CellGroupData[{
+Cell[56524, 1496, 6421, 119, 592, "Input"],
+Cell[62948, 1617, 7128, 203, 615, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70113, 1825, 132, 2, 31, "Input"],
+Cell[70248, 1829, 99, 1, 30, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[70384, 1835, 637, 13, 52, "Input"],
+Cell[71024, 1850, 409, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71470, 1867, 33, 0, 31, "Input"],
+Cell[71506, 1869, 301, 11, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[71844, 1885, 700, 14, 52, "Input"],
+Cell[72547, 1901, 455, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[73039, 1919, 600, 12, 52, "Input"],
+Cell[73642, 1933, 436, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74115, 1950, 98, 1, 31, "Input"],
+Cell[74216, 1953, 424, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[74677, 1971, 582, 12, 52, "Input"],
+Cell[75262, 1985, 400, 12, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[75699, 2002, 699, 14, 52, "Input"],
+Cell[76401, 2018, 394, 13, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[76832, 2036, 658, 13, 52, "Input"],
+Cell[77493, 2051, 338, 11, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[77868, 2067, 647, 13, 52, "Input"],
+Cell[78518, 2082, 333, 11, 70, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[78888, 2098, 650, 13, 52, "Input"],
+Cell[79541, 2113, 307, 11, 70, "Output"]
+}, Open  ]],
+Cell[79863, 2127, 574, 12, 52, "Input"],
+Cell[80440, 2141, 988, 20, 172, "Input"],
+Cell[81431, 2163, 815, 25, 112, "Input"],
+Cell[CellGroupData[{
+Cell[82271, 2192, 5708, 110, 652, "Input"],
+Cell[87982, 2304, 5883, 168, 615, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
